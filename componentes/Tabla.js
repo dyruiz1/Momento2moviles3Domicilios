@@ -12,7 +12,8 @@ export default function Tabla({ datos = [] }) {
         <Text style={tablaStyles.titulo}>Nombre</Text>
         <Text style={tablaStyles.titulo}>Fecha</Text>
         <Text style={tablaStyles.titulo}>Dirección</Text>
-        <Text style={tablaStyles.titulo}>Valor del pedido</Text>
+        <Text style={tablaStyles.titulo}>Cantidad</Text>
+        <Text style={tablaStyles.titulo}>Valor a pagar</Text>
       </View>
       <View style={tablaStyles.container}>
         {datos.map((pedido, index) => (

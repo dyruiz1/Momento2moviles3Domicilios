@@ -15,7 +15,7 @@ export default function App() {
         <Stack.Screen
           name="Home"
           component={HomeScreen}
-          options={{ title: "Domicilios De la Abuela" }}
+          options={{ title: "Arepas de chocolo Pecositas" }}
         />
         <Stack.Screen
           name="Domicilios"

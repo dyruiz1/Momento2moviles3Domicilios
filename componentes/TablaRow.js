@@ -9,6 +9,7 @@ export default function TablaRow({ pedido }) {
       <Text>{pedido.fullname}</Text>
       <Text>{pedido.fecha}</Text>
       <Text>{pedido.direccion}</Text>
+      <Text>{pedido.cantidad}</Text>
       <Text>{pedido.valor}</Text>
     </View>
   );

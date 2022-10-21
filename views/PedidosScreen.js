@@ -24,6 +24,9 @@ const styles = StyleSheet.create({
     width: "100%",
   },
 });
+function generarNombreRandom() {
+  return (Math.random() + 1).toString(8).substring(12);
+}
 
 const pedidoValidationSchema = yup.object().shape({
   pedidoNumero: yup
@@ -39,9 +42,14 @@ const pedidoValidationSchema = yup.object().shape({
     .string("Ingrese nombres y apellidos completos")
     .matches(/^[A-Za-zÁÉÍÓÚáéíóúñÑ ]+$/g, "Usuario solo puede contener letras.")
     .required("*Campo requerido")
-    .min(3, "minimo 3 caracteres"),  
+    .min(3, "minimo 3 caracteres"),
   fecha: yup.date().required("*Campo requerido Ingrese Mes-Dia-Año"),
   direccion: yup.string("Ingrese la direccion").required("*Campo requerido"),
+  cantidad: yup
+    .number()
+    .required("*Campo requerido")
+    .integer("ingresa numeros enteros")
+    .positive("ingresa un número mayor que cero"),
   valor: yup
     .number()
     .required("*Campo requerido")
@@ -57,16 +65,15 @@ const pedidoValidationSchema = yup.object().shape({
 
 export default function PedidoScreen() {
   const [datos, setDatos] = useState([
-    {
-      pedidoNumero: "1",
+    /*{
+      pedidoNumero: generarNombreRandom(),
       identificacion: "1020",
       fullname: "juan",
       fecha: "05-20-2020",
       direccion: "calle 13",
+      cantidad: "2",
       valor: "22000",
-      
-    },
-
+    },*/
   ]);
 
   const onFormSubmit = (values) => {
@@ -84,11 +91,12 @@ export default function PedidoScreen() {
             validateOnMount={true}
             validationSchema={pedidoValidationSchema}
             initialValues={{
-              pedidoNumero: "",
+              pedidoNumero: generarNombreRandom(),
               identificacion: "",
               fullname: "",
               fecha: "",
               direccion: "",
+              cantidad: "",
               valor: "",
             }}
             onSubmit={onFormSubmit}
@@ -165,6 +173,18 @@ export default function PedidoScreen() {
                 />
                 {errors.direccion && touched.direccion && (
                   <Text style={formStyles.errorText}>{errors.direccion}</Text>
+                )}
+
+                <TextInput
+                  style={formStyles.inputs}
+                  placeholder="Cantidad"
+                  onChangeText={handleChange("cantidad")}
+                  onBlur={handleBlur("cantidad")}
+                  value={values.cantidad}
+                  keyboardType="default"
+                />
+                {errors.cantidad && touched.cantidad && (
+                  <Text style={formStyles.errorText}>{errors.cantidad}</Text>
                 )}
 
                 <TextInput

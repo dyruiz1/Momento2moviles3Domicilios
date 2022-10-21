@@ -1,5 +1,5 @@
 import { Text } from "react-native";
 
 export default function MovimientoScreen() {
-  return <Text>Movimiento</Text>;
+  return <Text>Rastreando pedido</Text>;
 }

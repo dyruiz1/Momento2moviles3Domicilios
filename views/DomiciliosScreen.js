@@ -15,7 +15,7 @@ export default function DomiciliosScreen({ navigation, route }) {
         name="Pedido"
         component={PedidoScreen}
         options={{
-          title: "Pedidos",
+          title: "Haz tú Pedido",
           tabBarIcon: ({ color, size }) => (
             <Ionicons name="cart-outline" color={"blue"} size={18} />
           ),
@@ -25,7 +25,7 @@ export default function DomiciliosScreen({ navigation, route }) {
         name="Movimientos"
         component={MovimientoScreen}
         options={{
-          title: "Movimientos",
+          title: "Rastrea Pedido",
           tabBarIcon: ({ color, size }) => (
             <Ionicons name="person-circle-outline" color={"orange"} size={18} />
           ),
